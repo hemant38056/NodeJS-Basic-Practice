@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum</title>
+</head>
+<body>
+    <h1 align = "center">Addition App</h1>
+    <%- include('common/nav') %>
+    <br><br>
+
+    <form action="/cal" method="post" align = "center">
+        Enter 1st Value <input type="number" name="a" required> <br> <br>
+        Enter 2nd Value <input type="number" name="b" required> <br> <br>
+        <button>Add</button>
+    </form>
+
+    <% if (locals.results) { %>
+        <h3 align = "center"><%=results%></h3>
+    <% } %>
+</body>
+</html>

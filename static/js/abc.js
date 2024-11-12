@@ -1,0 +1,3 @@
+function Zirakpur(){
+    alert("Welcome");
+}

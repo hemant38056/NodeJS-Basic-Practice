@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Display</title>
+</head>
+<body>
+    <%- include('common/nav') %>
+    <br><br>
+    <h1 align = "center">List of Records</h1>
+    <table align="center" border="1" cellpadding = "10">
+        <thead>
+            <th>SNO</th>
+            <th>Name</th>
+            <th>Aadhar Card</th>
+            <th>Address</th>
+        </thead>
+        <tbody>
+             <% record.forEach(function(row){ %>
+                <tr>
+                    <td><%=row.id%></td>
+                    <td><%=row.name%></td>
+                    <td><%=row.Aadharcard%></td>
+                    <td><%=row.address%></td>
+                </tr>
+           <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

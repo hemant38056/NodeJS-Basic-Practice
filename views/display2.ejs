@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Displaying Records</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/Bootstrap.min.css">
+
+<link href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+<!-- Bootstrap core JavaScript-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Page level plugin JavaScript--><script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+
+</head>
+<body>
+  <%- include('common/nav') %>
+
+    <!-- modal -->
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Information Update</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form action="">
+                <label for="name">Name : </label>
+                <input type="text" id="name" name="name"><br><br>
+    
+                <label for="aadhar">Aadhar Card : </label>
+                <input type="text" id="aadhar" name="aadhar"><br><br>
+    
+                <label for="address">Address : </label>
+                <input type="text" id="address" name="address">
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br><br>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2">
+                <table class="table table-primary" id="ram">
+                    <thead>
+                        <th>SNO</th>
+                        <th>Name</th>
+                        <th>Aadhar Card</th>
+                        <th>Address</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody>
+                        <% record.forEach(function(row) { %>
+                            <tr>
+                              <td><%= row.id %></td>
+                              <td><%= row.name %></td>
+                              <td><%= row.Aadharcard %></td>
+                              <td><%= row.address %></td>
+                              <td><a href="/delete_record1?hm_id=<%=row.id%>" class="btn btn-danger" onclick="return confirm('Are You Sure?')">Delete</a>
+                                  <a href="" class="btn btn-primary btn-update" data-bs-toggle="modal" data-bs-target="#exampleModal">Update</a>
+                              </td> 
+                            </tr>
+                          <% }); %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="/js/Bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(()=>{
+            $('#ram').dataTable();  
+            $('.btn-update').click(function(){
+              var row = $(this).closest('tr');
+              var rowData = row.find('td').map(function(){
+                return $(this).text();
+              }).get();
+
+              console.log(rowData[1]);
+
+              $('#name').val(rowData[1]);
+              $('#aadhar').val(rowData[2]);
+              $('#address').val(rowData[3]);
+            }); 
+        });
+    </script>
+</body>
+</html>

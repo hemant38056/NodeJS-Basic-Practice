@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete and show</title>
+</head>
+<body>
+    <%- include('common/nav') %>
+    <h1 align="center">Delete the record</h1>
+    <br><br>
+    <form action="/delete_show" method="POST">
+        Enter human name : <input type="text" name="name" id="name" required placeholder="Enter Human Name">
+        <button type="submit" onclick=" return confirm('Do you want to delete the record?')">Delete</button>
+    </form>
+
+   <% if(locals.record){ %>
+        <h3 align="center" style="color: green;">Record Deleted and Below is the Updated table</h3>
+        <table align="center" border="1">
+            <thead>
+                <th>SNO</th>
+                <th>Name</th>
+                <th>Aadhar Card</th>
+                <th>Address</th>
+            </thead>
+            <tbody>
+               <% record.forEach(function(row){ %>
+                    <tr>
+                        <td><%= row.id %></td>
+                        <td><%= row.name %></td>
+                        <td><%= row.Aadharcard %></td>
+                        <td><%= row.address %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% }
+    else if(locals.message){ %>
+        <h3 align="center" style="color: red;"><%=message%></h3>
+    <%}%>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication</title>
+</head>
+<body>
+    <h1 align = "center">Multiplication App</h1>
+    <%- include('common/nav') %>
+    <br>
+    <br>
+
+    <form action="/multi" method="POST" align = "center">
+        Enter Your A value  <input type="number" name="a" required><br><br>
+        Enter Your B value <input type="number" name="b" required> <br><br>
+        <button>Find Multiplication</button>
+    </form>
+
+    <center>
+        <% if(locals.message){ %>
+            <h3 align = "center"><%= message %></h3>
+        <% } %>
+    </center>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include ('common/nav') %>
+    <h1>Lets count the Number of Entries in Different Tables</h1>
+    <br><br>
+    
+    <form action="/count_entries" method="POST">
+        Enter the table name : <input type="text" name="name" id="name" required placeholder="Enter the table name">
+        <span><input type="text" name="count" <%if(locals.count){%>value = "<%= count %>"n<%} %>></span>
+        <button>Count</button>
+    </form>
+</body>
+</html>
